@@ -231,7 +231,10 @@ class Twitch(object):
                 headers={
                     "Authorization": f"OAuth {self.twitch_login.get_auth_token()}",
                     "Client-Id": CLIENT_ID,
+                    "Client-Integrity": self.post_integrity(),
+                    "Device-ID": self.device_id,
                     "User-Agent": self.user_agent,
+                    "X-Device-Id": self.device_id,
                 },
             )
             logger.debug(
